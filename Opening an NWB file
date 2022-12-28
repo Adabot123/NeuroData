@@ -1,9 +1,18 @@
+#In the command prompt
+pip uninstall h5py
+conda install -c conda-forge "h5py>=3.2" #I downloaded conda using Anaconda and added its path to the environment variable. The previously downloaded h5py 3.7 was not built with ros3 driver and showed an error 
+
+#In python 3.10 IDLE
+mypath= ""C:\\Users\\HP\\anaconda3\\Lib\\site-packages\\h5py""
+import sys
+sys.path.append("mypath") #I added this because python was searching for the package in a different folder, but this shows the same error of not being able to find the module
 from dandi.dandiapi import DandiAPIClient
 dandiset_id = '000005'
 filepath = "sub-anm184389/sub-anm184389_ses-20130207_behavior+ecephys.nwb"
 with DandiAPIClient() as client:
     asset = client.get_dandiset(dandiset_id, 'draft').get_asset_by_path(filepath)
     s3_url = asset.get_content_url(follow_redirects=1, strip_query=True)
+
 from pynwb import NWBHDF5IO
 
 with NWBHDF5IO(s3_url, mode='r', load_namespaces=True, driver='ros3') as io:
