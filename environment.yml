@@ -1,4 +1,4 @@
-name: neurodata3
+name: neurodata
 channels:
   - conda-forge
   - defaults
