@@ -1,0 +1,4 @@
+name: neurodata-ffspec
+channels:
+  - defaults
+prefix: C:\Users\garre\miniconda3\envs\neurodata
