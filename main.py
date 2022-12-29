@@ -43,6 +43,7 @@ from fsspec.implementations.cached import CachingFileSystem
 
 # first, create a virtual filesystem based on the http protocol and use
 # caching to save accessed data to RAM.
+print('\n-------------- Step #0: Creating Virtual Filesystem --------------\n')
 fs = CachingFileSystem(
     fs=fsspec.filesystem("http"),
     cache_storage="nwb-cache",  # Local folder for the cache
